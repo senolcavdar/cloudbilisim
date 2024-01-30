@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudbilisim
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudbilisim  
+  template:
+    metadata:
+      labels:
+        app: cloudbilisim
+    spec:
+      containers:
+      - name: cloudbilisim-container
+        image: senol1/cloudbilisim:v1
+        ports:
+        - containerPort: 5000
