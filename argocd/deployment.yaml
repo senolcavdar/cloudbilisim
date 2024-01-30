@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: cloudbilisim-container
-        image: senol1/cloudbilisim:v1
+        image: senol1/cloudbilisim:v1.2
         ports:
         - containerPort: 5000
