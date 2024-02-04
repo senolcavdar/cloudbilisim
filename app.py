@@ -7,7 +7,7 @@ api = Api(app)
 
 class Quotes(Resource):
     def get(self):
-        data = pd.read_csv('quotes.csv')
+        data = pd.read_csv('quotes.csv', encoding='utf-8')
         data = data.to_dict('records')
         return {'data' : data}, 200
 
@@ -16,7 +16,7 @@ class Quotes(Resource):
         quotes = request.args['quotes']
         theme = request.args['theme']
 
-        data = pd.read_csv('quotes.csv')
+        data = pd.read_csv('quotes.csv', encoding='utf-8')
 
         new_data = pd.DataFrame({
             'date': [date],
@@ -24,12 +24,12 @@ class Quotes(Resource):
             'theme': [theme]
         })
         data = data.append(new_data, ignore_index=True)
-        data.to_csv('quotes.csv', index=False)
+        data.to_csv('quotes.csv', index=False, encoding='utf-8')
         return {'data': new_data.to_dict('records')}, 200
 
 class Date(Resource):
     def get(self, date):
-        data = pd.read_csv('quotes.csv')
+        data = pd.read_csv('quotes.csv', encoding='utf-8')
         data = data.to_dict('records')
         
         matching_entries = []
